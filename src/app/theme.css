@@ -1,0 +1,83 @@
+/* "Classical" design tokens — transcribed from the delivered Claude Design system
+   (project bfdb95a0-0c5b-440f-bd28-d5ab86301b4a, design-system "Classical"
+   62c3a3d8-dabc-45b3-aa31-251aadea3679). Source of truth for color/spacing/radius/
+   shadow — retune here, not in individual components. Font-family values are NOT
+   set here; next/font/google generates --font-heading/--font-body on <html> in
+   layout.tsx (see globals.css's @theme block), matching how Geist was loaded before.
+
+   Two additions beyond what the design system shipped (it defines no status colors):
+   --color-success / --color-danger, kept in the same muted OKLCH register as the
+   accent rather than generic SaaS red/green, since the app needs them for signed
+   transaction amounts and delete-confirmation UI.
+
+   2026-09-07 re-theme: tokens below marked REDESIGN were transcribed from
+   the redesign HTML mock's :root block (Inter/green editorial theme)
+   and intentionally overwrite the Classical values above where names collide
+   (--color-bg/surface/text/divider/accent). Non-colliding names are additive and
+   become Tailwind utilities via the @theme block in globals.css. There is no
+   tailwind.config.js in this project (Tailwind v4: CSS-first config); this file +
+   @theme is the equivalent of theme.extend. */
+
+:root {
+  --color-bg: #f6f5f1; /* REDESIGN --paper (was #f3f2f2) */
+  --color-paper: #f6f5f1; /* REDESIGN --paper */
+  --color-surface: #ffffff; /* REDESIGN --surface (was #eae9e9) */
+  --color-text: #171a1f; /* REDESIGN --ink (was #201f1d) */
+  --color-ink: #171a1f; /* REDESIGN --ink */
+  --color-ink-soft: #4b5058; /* REDESIGN --ink-soft */
+  --color-muted: #8b9098; /* REDESIGN --muted */
+  --color-border: #e6e4de; /* REDESIGN --border */
+  --color-accent: #1f6f54; /* REDESIGN --accent (was #b68235) */
+  --color-accent-soft: #e6efea; /* REDESIGN --accent-soft */
+  --color-warm: #c98a3f; /* REDESIGN --warm */
+  --color-divider: #e6e4de; /* REDESIGN: solid --border (was 16% text color-mix) */
+
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #fff3e4;
+  --color-accent-200: #ffe3bf;
+  --color-accent-300: #facb8d;
+  --color-accent-400: #e1ad66;
+  --color-accent-500: #c28d41;
+  --color-accent-600: #a06f24;
+  --color-accent-700: #7d5411;
+  --color-accent-800: #5a3b0a;
+  --color-accent-900: #3a270d;
+
+  /* Same muted OKLCH register as the accent — not generic SaaS red/green. */
+  --color-success: #4b6f1f;
+  --color-success-100: #eef3e2;
+  --color-success-700: #3a561a;
+  --color-danger: #9a4a2b;
+  --color-danger-100: #f7e9e2;
+  --color-danger-700: #7a3a22;
+
+  --font-heading-weight: 600;
+
+  --font-sans: 'Inter', 'General Sans', -apple-system, sans-serif; /* REDESIGN --font */
+
+  --space-1: 4.6px;
+  --space-2: 9.2px;
+  --space-3: 13.8px;
+  --space-4: 18.4px;
+  --space-6: 27.6px;
+  --space-8: 36.8px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 7px;
+  --radius-card: 12px; /* REDESIGN --radius-card */
+  --radius-pill: 999px; /* REDESIGN --radius-pill */
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+}
